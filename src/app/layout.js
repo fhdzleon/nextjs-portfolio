@@ -6,6 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "SkullDev Portfolio",
   description: "V2",
+  icons: "/favicon.ico",
 };
 
 export default function RootLayout({ children }) {
