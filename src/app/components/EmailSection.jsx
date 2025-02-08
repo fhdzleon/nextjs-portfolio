@@ -10,31 +10,17 @@ const EmailSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
+    const formData = new FormData(e.target);
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
+    const response = await fetch("https://formspree.io/f/xbldkaqg", {
       method: "POST",
-      // Tell the server we're sending JSON.
+      body: formData,
       headers: {
-        "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+    });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-
-    if (response.status === 200) {
-      console.log("Message sent.");
+    if (response.ok) {
       setEmailSubmitted(true);
     }
   };
@@ -42,41 +28,38 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+      className="relative grid gap-4 py-24 my-12 md:grid-cols-2 md:my-12"
     >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
+        <h5 className="my-2 text-xl font-bold text-white">Conectemos</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+          Estoy en busca de nuevas oportunidades y mi bandeja de entrada siempre
+          está abierta. Si tienes una pregunta o simplemente quieres saludar,
+          estaré encantado de leerte y responderte lo antes posible.
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
+        <div className="flex flex-row gap-2 socials">
+          <Link href="https://github.com/fhdzleon" target="_blank">
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="linkedin.com">
+          <Link href="https://www.linkedin.com/in/fhdzleon" target="_blank">
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
       </div>
       <div>
         {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
+          <p className="mt-2 text-sm text-green-500">
+            Email enviado con éxito!
           </p>
         ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="mb-6">
               <label
                 htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
+                className="block mb-2 text-sm font-medium text-white"
               >
-                Your email
+                Tu email
               </label>
               <input
                 name="email"
@@ -84,15 +67,15 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="alguien@google.com"
               />
             </div>
             <div className="mb-6">
               <label
                 htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block mb-2 text-sm font-medium text-white"
               >
-                Subject
+                Asunto
               </label>
               <input
                 name="subject"
@@ -100,28 +83,29 @@ const EmailSection = () => {
                 id="subject"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
+                placeholder="Hola!"
               />
             </div>
             <div className="mb-6">
               <label
                 htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block mb-2 text-sm font-medium text-white"
               >
-                Message
+                Mensaje
               </label>
               <textarea
                 name="message"
                 id="message"
+                required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
+                placeholder="Hablemos de..."
               />
             </div>
             <button
               type="submit"
               className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             >
-              Send Message
+              Enviar mensaje
             </button>
           </form>
         )}

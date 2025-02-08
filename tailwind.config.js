@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
+const { addDynamicIconSelectors } = require("@iconify/tailwind");
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,9 +17,9 @@ module.exports = {
     },
     colors: {
       ...colors,
-      primary: colors.purple,
-      secondary: colors.pink,
+      primary: colors.blue,
+      secondary: colors.amber,
     },
   },
-  plugins: [],
+  plugins: [addDynamicIconSelectors()],
 };

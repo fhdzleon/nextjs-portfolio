@@ -8,13 +8,19 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="list-disc pl-2">
+      <ul className="grid grid-cols-2 pl-2 list-disc">
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>CSS</li>
         <li>Node.js</li>
         <li>Express</li>
-        <li>PostgreSQL</li>
-        <li>Sequelize</li>
-        <li>JavaScript</li>
         <li>React</li>
+        <li>Next.js</li>
+        <li>Vite</li>
+        <li>Postgres</li>
+        <li>MongoDb</li>
+        <li>Tailwind</li>
+        <li>Entornos Agile</li>
       </ul>
     ),
   },
@@ -22,9 +28,9 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Fullstack Academy of Code</li>
-        <li>University of California, Santa Cruz</li>
+      <ul className="pl-2 list-disc">
+        <li>Bootcamp Desarrollo Web Fullstack &apos;Soy Henry&apos;</li>
+        <li>Universidad Tecnologica de México - Ingenieria comercial</li>
       </ul>
     ),
   },
@@ -32,9 +38,10 @@ const TAB_DATA = [
     title: "Certifications",
     id: "certifications",
     content: (
-      <ul className="list-disc pl-2">
-        <li>AWS Cloud Practitioner</li>
-        <li>Google Professional Cloud Developer</li>
+      <ul className="pl-2 list-disc">
+        <li>Fullstack Web Developer - Soy Henry</li>
+        <li>Responsive Web Dessing - Freecodecamp</li>
+        <li>English B1 Intermediate - EF-Set</li>
       </ul>
     ),
   },
@@ -52,17 +59,23 @@ const AboutSection = () => {
 
   return (
     <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.png" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+      <div className="items-center gap-8 px-4 py-8 md:grid md:grid-cols-2 xl:gap-16 sm:py-16 xl:px-16">
+        <Image
+          src="/images/about-image.png"
+          alt="about"
+          width={500}
+          height={500}
+        />
+        <div className="flex flex-col h-full mt-4 text-left md:mt-0">
+          <h2 className="mb-4 text-4xl font-bold text-white">Sobre mi</h2>
+
           <p className="text-base lg:text-lg">
-            I am a full stack web developer with a passion for creating
-            interactive and responsive web applications. I have experience
-            working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-            Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am a team player and
-            I am excited to work with others to create amazing applications.
+            Soy Fullstack Developer especializado en Frontend, con una sólida
+            base en desarrollo de aplicaciones funcionales adquirida a través
+            del bootcamp intensivo Soy Henry. Mi pasión por la tecnología se
+            centra en crear experiencias visuales e interactivas que conecten
+            con los usuarios, aprovechando las últimas tendencias y herramientas
+            del desarrollo web.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton
@@ -70,21 +83,21 @@ const AboutSection = () => {
               active={tab === "skills"}
             >
               {" "}
-              Skills{" "}
+              Habilidades{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("education")}
               active={tab === "education"}
             >
               {" "}
-              Education{" "}
+              Educación{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
             >
               {" "}
-              Certifications{" "}
+              Certificaciones{" "}
             </TabButton>
           </div>
           <div className="mt-8">

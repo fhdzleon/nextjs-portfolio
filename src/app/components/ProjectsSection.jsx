@@ -1,63 +1,63 @@
 "use client";
 import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
+
 import { motion, useInView } from "framer-motion";
 
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 description",
+    title: "Stockify",
+    description: "MVP Gestor de inventarios",
     image: "/images/projects/1.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/fhdzleon/stockDep.git",
+    previewUrl: "https://stock-dep-xi.vercel.app/main",
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
-    description: "Project 2 description",
+    title: "Telemed",
+    description: "MVP Sistema de teleconsultas medicas",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/fhdzleon/teleDeploy.git",
+    previewUrl: "https://telemed-beta-nine.vercel.app/",
   },
   {
     id: 3,
-    title: "E-commerce Application",
-    description: "Project 3 description",
+    title: "BP - Ventures",
+    description: "Sistema intranet, empresa de RRHH",
     image: "/images/projects/3.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://www.youtube.com/watch?v=OFu6ewsr_zg",
+    previewUrl: "https://www.youtube.com/watch?v=OFu6ewsr_zg",
   },
   {
     id: 4,
-    title: "Food Ordering Application",
-    description: "Project 4 description",
+    title: "Skull market",
+    description: "E-Commerce Tech",
     image: "/images/projects/4.png",
     tag: ["All", "Mobile"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/fhdzleon/skullMarket.git",
+    previewUrl: "https://skull-gadgets-git-main-skulldevs-projects.vercel.app/",
   },
   {
     id: 5,
-    title: "React Firebase Template",
-    description: "Authentication and CRUD operations",
+    title: "Dental App",
+    description: "Sistema de turnos para consultorio dental",
     image: "/images/projects/5.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/fhdzleon/dentalApp.git",
+    previewUrl: "https://dental-app-iota.vercel.app/",
   },
   {
     id: 6,
-    title: "Full-stack Roadmap",
-    description: "Project 5 description",
+    title: "Skull Cinema",
+    description: "Proyecto academico de cine",
     image: "/images/projects/6.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/fhdzleon/p2m1.git",
+    previewUrl: "https://skulltech.netlify.app/",
   },
 ];
 
@@ -65,10 +65,6 @@ const ProjectsSection = () => {
   const [tag, setTag] = useState("All");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
 
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
@@ -81,27 +77,10 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
+      <h2 className="mt-4 mb-8 text-4xl font-bold text-center text-white md:mb-12">
+        Proyectos
       </h2>
-      <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Mobile"
-          isSelected={tag === "Mobile"}
-        />
-      </div>
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+      <ul ref={ref} className="grid gap-8 md:grid-cols-3 md:gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li
             key={index}
