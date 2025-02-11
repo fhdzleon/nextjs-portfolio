@@ -83,7 +83,7 @@ const AboutSection = () => {
               active={tab === "skills"}
             >
               {" "}
-              Habilidades{" "}
+              Skills{" "}
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("education")}
